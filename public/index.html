@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Client Reply Assistant – Advanced</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Client Reply Assistant</h1>
+    <p class="subtitle">
+      Your personal co-pilot for replying to store owners – language-aware, human, and tailored to your style.
+    </p>
+
+    <!-- PROFILE SECTION -->
+    <section class="card">
+      <h2>Your Sales Profile</h2>
+      <p class="hint">Saved locally in your browser so every reply sounds like <strong>you</strong>.</p>
+      <div class="grid">
+        <label>
+          Your name
+          <input type="text" id="profileName" placeholder="e.g. Solo Mark" />
+        </label>
+        <label>
+          Agency / Brand
+          <input type="text" id="profileAgency" placeholder="e.g. Myth Digital Agency" />
+        </label>
+        <label>
+          Your role
+          <input type="text" id="profileRole" placeholder="e.g. Shopify Optimization Specialist" />
+        </label>
+      </div>
+
+      <label>
+        Default signature (optional)
+        <textarea id="profileSignature" rows="2" placeholder="e.g. Best regards, Solo Mark – Myth Digital Agency"></textarea>
+      </label>
+
+      <div class="grid">
+        <label>
+          Default sales proof URLs (one per line)
+          <textarea id="profileSalesProofUrls" rows="3" placeholder="https://...&#10;https://..."></textarea>
+        </label>
+        <label>
+          Default portfolio URLs (one per line)
+          <textarea id="profilePortfolioUrls" rows="3" placeholder="https://...&#10;https://..."></textarea>
+        </label>
+      </div>
+
+      <button type="button" id="saveProfileBtn">Save Profile</button>
+      <span id="profileStatus" class="small-status"></span>
+    </section>
+
+    <!-- REPLY FORM -->
+    <form id="reply-form" class="card">
+      <h2>New Reply</h2>
+
+      <label>
+        Conversation name (client / thread)
+        <input type="text" id="conversationName" placeholder="e.g. Menstrulax – main thread" />
+      </label>
+
+      <div class="grid">
+        <label>
+          Reply name (for you)
+          <input type="text" id="replyName" placeholder="e.g. Menstrulax – first reply" />
+        </label>
+
+        <label>
+          Store owner name
+          <input type="text" id="storeName" placeholder="e.g. Menstrulax" />
+        </label>
+
+        <label>
+          Store URL
+          <input type="text" id="storeUrl" placeholder="https://example.com" />
+        </label>
+      </div>
+
+      <label>
+        Your scouting / reachout message
+        <textarea id="scoutingMessage" rows="3" placeholder="Paste the message you sent to the store owner"></textarea>
+      </label>
+
+      <label>
+        Store owner latest reply (any language)
+        <textarea id="storeOwnerReply" rows="3" placeholder="Paste their latest message here"></textarea>
+      </label>
+
+      <div class="grid">
+        <label>
+          Tone
+          <select id="tone">
+            <option value="persuasive">Persuasive</option>
+            <option value="exaggerating">Exaggerating (but professional)</option>
+            <option value="friendly">Friendly</option>
+            <option value="formal">Formal</option>
+            <option value="direct">Direct</option>
+            <option value="">Let AI choose professional tone</option>
+          </select>
+        </label>
+
+        <label>
+          Reply goal
+          <select id="goal">
+            <option value="get_whatsapp">Get WhatsApp / direct contact</option>
+            <option value="book_call">Book a call</option>
+            <option value="explain_offer">Explain the offer clearly</option>
+            <option value="close_deal">Move closer to a yes</option>
+            <option value="">General follow-up</option>
+          </select>
+        </label>
+
+        <label>
+          Length
+          <select id="length">
+            <option value="medium">Medium</option>
+            <option value="short">Short</option>
+            <option value="long">Long</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="grid">
+        <label>
+          Extra sales proof URLs (this reply only, one per line)
+          <textarea id="salesProofUrls" rows="3" placeholder="https://...&#10;https://..."></textarea>
+        </label>
+        <label>
+          Extra portfolio URLs (this reply only, one per line)
+          <textarea id="portfolioUrls" rows="3" placeholder="https://...&#10;https://..."></textarea>
+        </label>
+      </div>
+
+      <label>
+        Extra notes (optional)
+        <textarea id="extraNotes" rows="3" placeholder="Anything special you want this reply to mention or avoid"></textarea>
+      </label>
+
+      <button type="submit" id="generateBtn">Generate Reply</button>
+      <div id="status"></div>
+    </form>
+
+    <!-- CONVERSATION VIEW -->
+    <section class="card">
+      <h2>Conversation History</h2>
+      <p class="hint">Shows how the chat with this client is evolving.</p>
+      <div id="conversationView" class="conversation-box"></div>
+    </section>
+
+    <!-- GENERATED REPLY -->
+    <section id="output" class="card hidden">
+      <div class="output-header">
+        <h2>Generated Reply</h2>
+        <button id="copyBtn">Copy</button>
+      </div>
+      <pre id="replyText"></pre>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
